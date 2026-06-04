@@ -1,0 +1,20 @@
+# Dependências / build
+node_modules/
+dist/
+.cache/
+
+# Ambiente
+.env
+.env.local
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Editores
+.vscode/
+.idea/
