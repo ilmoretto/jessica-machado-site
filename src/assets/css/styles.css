@@ -367,10 +367,10 @@ h1, h2, h3 {
 .book__cube {
   position: relative; width: var(--bw); height: var(--bh);
   transform-style: preserve-3d;
-  transform: rotateX(5deg) rotateY(-34deg);
+  transform: rotateX(5deg) rotateY(32deg);
   transition: transform 1s var(--ease-out);
 }
-.book:hover .book__cube { transform: rotateX(3deg) rotateY(-16deg); }
+.book:hover .book__cube { transform: rotateX(3deg) rotateY(15deg); }
 .book__face { position: absolute; }
 .book__front, .book__back { width: var(--bw); height: var(--bh); top: 0; left: 0; }
 .book__front {
@@ -389,15 +389,15 @@ h1, h2, h3 {
   width: var(--bd); height: var(--bh);
   left: calc(50% - var(--bd) / 2); top: 0;
   transform: rotateY(-90deg) translateZ(calc(var(--bw) / 2));
-  background: linear-gradient(90deg, var(--bordo-darker), var(--bordo) 45%, var(--bordo-deep));
+  background: linear-gradient(90deg, #e4dccf 0%, #fbf9f6 30%, #ffffff 70%, #efe9e0 100%);
   border-radius: 3px 0 0 3px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: inset 0 0 14px rgba(0,0,0,.4);
+  box-shadow: inset -6px 0 12px -6px rgba(0,0,0,.18), inset 6px 0 10px -6px rgba(0,0,0,.12);
 }
 .book__spine span {
   writing-mode: vertical-rl; transform: rotate(180deg);
-  font-family: var(--serif); font-style: italic; font-size: .92rem;
-  letter-spacing: .04em; color: rgba(255,255,255,.92); white-space: nowrap;
+  font-family: var(--serif); font-weight: 600; font-size: .92rem;
+  letter-spacing: .04em; color: #C5172E; white-space: nowrap;
 }
 .book__pages {
   width: var(--bd); height: calc(var(--bh) - 8px);
