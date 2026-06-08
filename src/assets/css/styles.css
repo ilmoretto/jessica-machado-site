@@ -495,3 +495,118 @@ h1, h2, h3 {
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .float-card, .wa-float::before { animation: none !important; }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   COMPONENTES MULTI-PÁGINA (perfil + landing pages)
+   ════════════════════════════════════════════════════════════════════ */
+
+.container.narrow { --maxw: 800px; }
+
+/* ── Faixa de números/experiência ── */
+.stats-band { background: var(--nude-2); border-block: 1px solid var(--line); padding: 2.2rem 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
+.stat { display: flex; flex-direction: column; gap: .25rem; position: relative; }
+.stat + .stat::before { content: ""; position: absolute; left: calc(-.75rem - 1px); top: 10%; height: 80%; width: 1px; background: var(--line-2); }
+.stat-num { font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 4vw, 2.7rem); color: var(--bordo); line-height: 1; }
+.stat-label { font-size: .86rem; color: var(--texto-2); }
+
+/* ── Timeline (trajetória) ── */
+.timeline { list-style: none; max-width: 760px; margin: 0 auto; position: relative; padding-left: 1.5rem; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--rosa), var(--rosa-claro)); }
+.tl-item { position: relative; display: grid; grid-template-columns: 120px 1fr; gap: 1.4rem; padding: 0 0 2rem; }
+.tl-item::before { content: ""; position: absolute; left: -1.5rem; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--bordo); box-shadow: 0 0 0 4px var(--nude-2); }
+.tl-year { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; color: var(--bordo); padding-top: 1px; }
+.tl-body h3 { font-size: 1.4rem; margin-bottom: .3rem; }
+.tl-body p { color: var(--texto-2); }
+
+/* ── Cards de áreas de atendimento ── */
+.area-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.area-card {
+  display: block; background: var(--branco); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 2.4rem 2.1rem; box-shadow: var(--sh-md);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.area-card:hover { transform: translateY(-8px); box-shadow: var(--sh-lg); }
+.area-card h3 { font-size: 1.7rem; margin: .2rem 0 .6rem; }
+.area-card p { color: var(--texto-2); margin-bottom: 1.2rem; }
+.area-link { display: inline-flex; align-items: center; gap: .4rem; color: var(--bordo); font-weight: 500; }
+.area-link .icon { width: 1.05rem; height: 1.05rem; transition: transform .25s var(--ease); }
+.area-card:hover .area-link .icon { transform: translateX(4px); }
+
+/* ════════════ LANDING PAGES ════════════ */
+.lp-hero {
+  position: relative;
+  background:
+    radial-gradient(110% 80% at 100% -10%, var(--nude) 0%, transparent 55%),
+    linear-gradient(180deg, var(--creme), var(--branco));
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(3rem, 6vw, 5rem);
+}
+.lp-hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.lp-hero-text h1 { font-size: clamp(2.2rem, 4.8vw, 3.5rem); margin-bottom: 1.1rem; }
+.lp-hero-text .lead { font-size: 1.12rem; color: var(--texto-2); margin-bottom: 1.4rem; max-width: 46ch; }
+
+.check-list { list-style: none; display: grid; gap: .7rem; margin-bottom: 1.8rem; }
+.check-list li { display: flex; align-items: flex-start; gap: .65rem; color: var(--texto); }
+.check-list .icon { width: 1.3rem; height: 1.3rem; color: #1f9d55; flex: none; margin-top: .15rem; }
+
+/* ── Formulário de captura ── */
+.capture-card {
+  background: var(--branco); border: 1px solid var(--line-2);
+  border-radius: var(--r-lg); padding: 2rem 1.9rem;
+  box-shadow: var(--sh-lg);
+  border-top: 5px solid var(--bordo);
+}
+.capture-card h2 { font-size: 1.9rem; margin-bottom: .3rem; }
+.capture-sub { font-size: .92rem; color: var(--texto-2); margin-bottom: 1.4rem; }
+.capture-form .field { margin-bottom: 1rem; }
+.capture-form label { display: block; font-size: .78rem; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--texto-2); margin-bottom: .35rem; }
+.capture-form input, .capture-form select {
+  width: 100%; font-family: var(--sans); font-size: 1rem; color: var(--texto);
+  padding: .8rem .9rem; border: 1.5px solid var(--line-2); border-radius: var(--r-sm);
+  background: var(--creme); transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.capture-form input::placeholder { color: var(--texto-3); }
+.capture-form input:focus, .capture-form select:focus {
+  outline: none; border-color: var(--rosa); background: #fff;
+  box-shadow: 0 0 0 3px rgba(194,123,131,.18);
+}
+.btn-block { width: 100%; justify-content: center; margin-top: .4rem; }
+.form-note { display: flex; align-items: center; gap: .45rem; justify-content: center; font-size: .8rem; color: var(--texto-3); margin-top: .9rem; }
+.form-note .icon { width: 1rem; height: 1rem; color: #1f9d55; }
+
+/* ── Passos (como funciona) ── */
+.steps { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; max-width: 860px; margin: 0 auto; }
+.step { display: flex; gap: 1rem; background: var(--branco); border: 1px solid var(--line); border-radius: var(--r); padding: 1.5rem 1.6rem; box-shadow: var(--sh-sm); }
+.step-n { flex: none; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--bordo); color: #fff; font-family: var(--serif); font-size: 1.3rem; font-weight: 600; }
+.step h3 { font-size: 1.3rem; margin-bottom: .2rem; }
+.step p { color: var(--texto-2); font-size: .96rem; }
+
+/* ── FAQ ── */
+.faq { display: grid; gap: .8rem; max-width: 760px; margin: 0 auto; }
+.faq-item { background: var(--branco); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 0 1.3rem; box-shadow: var(--sh-sm); }
+.faq-item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  cursor: pointer; list-style: none; padding: 1.1rem 0;
+  font-family: var(--serif); font-size: 1.25rem; color: var(--bordo); font-weight: 600;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary .icon { transition: transform .3s var(--ease); color: var(--rosa); }
+.faq-item[open] summary .icon { transform: rotate(180deg); }
+.faq-item p { color: var(--texto-2); padding: 0 0 1.2rem; margin: 0; }
+
+.cities-center { text-align: center; }
+
+/* ── Responsivo multi-página ── */
+@media (max-width: 900px) {
+  .lp-hero-grid { grid-template-columns: 1fr; }
+  .area-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.8rem 1.5rem; }
+  .stat:nth-child(3)::before, .stat + .stat::before { display: none; }
+  .steps { grid-template-columns: 1fr; }
+  .tl-item { grid-template-columns: 90px 1fr; gap: 1rem; }
+}
+@media (max-width: 560px) {
+  .tl-item { grid-template-columns: 1fr; gap: .2rem; }
+  .tl-year { color: var(--rosa); }
+  .capture-card { padding: 1.6rem 1.3rem; }
+}
