@@ -153,10 +153,11 @@ Escrita Criativa (80h) · Análise e Produção Textual (60h) · Arteterapia (10
 
 - [x] **Número do CRP** — 24/04453 ✅
 - [x] **Identidade visual** — logo recebido (Ψ + floral, bordô/rosa) ✅
+- [x] **Logo oficial** aplicado (PNG transparente em `src/assets/logo/`) ✅
+- [x] **Fotos da Jéssica** aplicadas (hero + Sobre, em `src/assets/img/`) ✅
 - [ ] Confirmar **registro do título** de especialista em neuropsicologia no CRP
-- [ ] **Arquivos do logo em alta** (PNG/SVG/PDF) para salvar em `src/assets/logo/`
 - [ ] Endereço(s) do(s) consultório(s) presencial(is) nas 3 cidades
-- [ ] Fotos profissionais (dela + ambiente) e capa do livro em alta
+- [ ] **Capa do livro** em alta + link de compra
 - [ ] Onde comprar o livro (link Amazon/loja)?
 - [ ] Quer domínio próprio? E-mail profissional?
 - [ ] Valores/forma de agendamento (mostrar preço ou só "consultar"?)
