@@ -32,7 +32,7 @@
 
   /* --- Reveal ao rolar --- */
   const revealEls = document.querySelectorAll(
-    ".pillar, .card, .about-text, .about-photo, .split-text, .emergency, .book-cover, .section-head, .hero-text, .hero-art"
+    ".pillar, .card, .about-text, .about-photo, .split-text, .emergency, .book, .section-head, .hero-text, .hero-art"
   );
   revealEls.forEach(function (el) { el.setAttribute("data-reveal", ""); });
 
