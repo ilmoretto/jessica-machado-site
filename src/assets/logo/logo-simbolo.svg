@@ -1,20 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Símbolo Psi - Jéssica Machado">
-  <!-- PLACEHOLDER: substituir pelo logo oficial (Ψ + floral) em alta -->
-  <g fill="none" stroke="#C27B83" stroke-width="2.2" stroke-linecap="round">
-    <!-- ramo floral -->
-    <path d="M150 150 C168 120 178 96 176 70" />
-    <path d="M176 70 q-10 -8 -18 -6 q6 10 18 6 Z" fill="#C27B83" fill-opacity="0.18"/>
-    <path d="M165 104 q-12 -6 -20 -2 q8 10 20 2 Z" fill="#C27B83" fill-opacity="0.18"/>
-    <path d="M158 126 q12 -8 22 -4 q-8 10 -22 4 Z" fill="#C27B83" fill-opacity="0.18"/>
-    <path d="M150 150 q-6 4 -8 12" />
-    <circle cx="142" cy="166" r="2.4" fill="#C27B83" stroke="none"/>
-    <circle cx="184" cy="64" r="2.4" fill="#C27B83" stroke="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440" role="img" aria-label="Símbolo Ψ floral — Jéssica Machado Psicóloga">
+  <!--
+    Recriação vetorial do símbolo da marca (Ψ + ilustração floral).
+    Cor: rosa antigo da identidade. Para fidelidade 1:1 com o original,
+    basta substituir este arquivo pelo SVG/PNG oficial da designer.
+  -->
+  <g fill="#BC6B76">
+    <!-- haste vertical -->
+    <rect x="150" y="150" width="20" height="206"/>
+    <!-- serifa do topo -->
+    <rect x="140" y="148" width="40" height="8" rx="2"/>
+    <!-- pé / base com serifa -->
+    <path d="M114 356 h92 q6 0 6 6 t-6 6 h-92 q-6 0 -6 -6 t6 -6 Z"/>
   </g>
-  <!-- letra Psi -->
-  <g fill="#9E1B32">
-    <path d="M112 60 h16 v118 h-16 z"/>
-    <path d="M120 60 c0 36 -14 58 -40 58 v-15 c16 0 24 -14 24 -43 z"/>
-    <path d="M120 60 c0 36 14 58 40 58 v-15 c-16 0 -24 -14 -24 -43 z"/>
-    <rect x="96" y="174" width="48" height="12" rx="2"/>
+
+  <!-- braços do Ψ: longo floreio à esquerda + braço direito -->
+  <g fill="none" stroke="#BC6B76" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M160 152 C150 92 110 66 58 62"/>
+    <path d="M160 152 C171 106 192 86 224 76"/>
+  </g>
+
+  <!-- ilustração floral (linha fina, estilo desenhado à mão) -->
+  <g fill="none" stroke="#BC6B76" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ramo principal -->
+    <path d="M224 78 C250 70 272 58 292 44"/>
+    <path d="M226 92 C246 104 258 126 260 152"/>
+
+    <!-- tulipa superior -->
+    <path d="M268 64 C260 50 261 34 272 24 C283 34 284 50 276 64"/>
+    <path d="M268 64 C255 56 247 44 248 30 C260 34 268 48 272 60"/>
+    <path d="M276 64 C289 56 297 44 296 30 C284 34 276 48 272 60"/>
+    <path d="M272 60 V40"/>
+
+    <!-- tulipa lateral direita -->
+    <path d="M300 92 C294 78 296 62 308 54 C317 64 316 80 308 92"/>
+    <path d="M300 92 C288 86 281 74 283 60 C294 66 300 78 304 90"/>
+    <path d="M308 92 C319 84 324 72 322 60 C312 66 306 78 304 90"/>
+
+    <!-- folhas alongadas com nervura -->
+    <path d="M236 150 C214 142 200 124 200 104 C222 110 238 128 240 150 Z"/>
+    <path d="M214 126 C222 132 232 140 238 148"/>
+    <path d="M262 158 C284 150 300 132 300 112 C278 118 262 136 260 158 Z"/>
+    <path d="M284 132 C276 138 266 146 261 156"/>
+
+    <!-- estames (hastes finas com ponta) -->
+    <path d="M232 118 C226 108 222 96 224 86"/>
+    <path d="M246 132 C244 120 246 108 252 98"/>
+    <circle cx="224" cy="84" r="2.4"/>
+    <circle cx="253" cy="96" r="2.4"/>
+    <circle cx="294" cy="42" r="2.4"/>
   </g>
 </svg>
