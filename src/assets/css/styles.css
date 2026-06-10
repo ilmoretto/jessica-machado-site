@@ -610,3 +610,15 @@ h1, h2, h3 {
   .tl-year { color: var(--rosa); }
   .capture-card { padding: 1.6rem 1.3rem; }
 }
+
+/* ── Menu mobile: backdrop + trava de scroll ── */
+.nav-backdrop {
+  position: fixed; inset: 0; z-index: 45;
+  background: rgba(52, 41, 45, .45);
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s var(--ease);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
+.nav-backdrop.show { opacity: 1; pointer-events: auto; }
+body.menu-open { overflow: hidden; }
+@media (min-width: 901px) { .nav-backdrop { display: none; } }

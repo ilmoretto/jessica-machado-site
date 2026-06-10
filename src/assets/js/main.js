@@ -7,18 +7,33 @@
   /* --- Menu mobile --- */
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("nav-menu");
+  let backdrop = null;
 
+  function openMenu() {
+    nav.classList.add("open");
+    toggle.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    document.body.classList.add("menu-open");
+    if (backdrop) backdrop.classList.add("show");
+  }
   function closeMenu() {
     nav.classList.remove("open");
     toggle.classList.remove("open");
     toggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("menu-open");
+    if (backdrop) backdrop.classList.remove("show");
   }
 
   if (toggle && nav) {
+    // backdrop para fechar ao tocar fora
+    backdrop = document.createElement("div");
+    backdrop.className = "nav-backdrop";
+    document.body.appendChild(backdrop);
+    backdrop.addEventListener("click", closeMenu);
+
     toggle.addEventListener("click", function () {
-      const open = nav.classList.toggle("open");
-      toggle.classList.toggle("open", open);
-      toggle.setAttribute("aria-expanded", String(open));
+      if (nav.classList.contains("open")) closeMenu();
+      else openMenu();
     });
     // fecha ao clicar num link
     nav.querySelectorAll("a").forEach(function (link) {
@@ -27,6 +42,10 @@
     // fecha com ESC
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeMenu();
+    });
+    // fecha ao voltar para desktop
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900) closeMenu();
     });
   }
 

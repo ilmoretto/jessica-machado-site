@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ismailepereira.github.io/jessica-machado-site/sitemap.xml
