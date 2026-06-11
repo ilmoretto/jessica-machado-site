@@ -110,6 +110,9 @@
   document.querySelectorAll(".capture-form:not([data-collection])").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      // eventos de conversão (Meta Pixel + Google Analytics)
+      try { if (typeof window.fbq === "function") window.fbq("track", "Lead"); } catch (er) {}
+      try { if (typeof window.gtag === "function") window.gtag("event", "gerar_lead", { pagina: location.pathname }); } catch (er) {}
       const phone = form.dataset.phone || "5569999844141";
       const intro = form.dataset.intro || "Olá Jéssica! Vim pelo site.";
       let msg = intro + "\n";

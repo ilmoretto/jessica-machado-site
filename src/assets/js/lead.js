@@ -46,9 +46,11 @@
   forms.forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      // 1) grava no banco em segundo plano (não bloqueia o WhatsApp)
       var project = form.dataset.fb;
       var coll = form.dataset.collection;
+      // 0) eventos de conversão (Meta Pixel + Google Analytics)
+      trackLead(coll);
+      // 1) grava no banco em segundo plano (não bloqueia o WhatsApp)
       if (project) {
         getProject(project).then(function (ctx) {
           if (!ctx) return;
@@ -65,6 +67,10 @@
   });
 
   /* ---- helpers ---- */
+  function trackLead(area) {
+    try { if (typeof window.fbq === "function") window.fbq("track", "Lead", { content_name: area }); } catch (e) {}
+    try { if (typeof window.gtag === "function") window.gtag("event", "gerar_lead", { area: area, pagina: location.pathname }); } catch (e) {}
+  }
   function slug(k) {
     return k.normalize("NFD").replace(/[̀-ͯ]/g, "")
             .toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
