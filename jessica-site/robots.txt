@@ -1,0 +1,5 @@
+# Ao trocar de domínio, atualize a URL do Sitemap abaixo (ver docs/trocar-dominio.md)
+User-agent: *
+Allow: /
+
+Sitemap: https://ismailepereira.github.io/jessica-machado-site/sitemap.xml
