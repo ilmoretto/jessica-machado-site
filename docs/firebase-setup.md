@@ -109,13 +109,35 @@ Se um dia receber spam, dá para adicionar Firebase App Check / reCAPTCHA.
 
 ---
 
-## Depois: a parte da Clínica / Psicoterapia
-Quando for ativar a captação da página `relacionamentos.html`:
-1. No **mesmo projeto** Firebase, nada novo a criar.
-2. No `src/relacionamentos.html`, adicione no `<form>`:
-   `data-collection="leads_clinica"` e inclua os scripts
-   `firebase-config.js` e `lead.js` (igual à neuropsicologia).
-3. Acrescente nas Regras um bloco `match /leads_clinica/{doc} { ... }`
-   idêntico ao da neuropsicologia.
+## Clínica / Psicoterapia (ATIVA)
+A página `relacionamentos.html` também grava leads — na coleção
+**`leads_clinica`** (mesmo projeto Firebase).
 
-(É só me chamar que eu faço essa parte quando você quiser.)
+Regras das DUAS coleções (cole na aba Regras e publique):
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /leads_neuropsicologia/{doc} {
+      allow create: if request.resource.data.nome is string
+                    && request.resource.data.nome.size() > 1
+                    && request.resource.data.nome.size() < 200
+                    && request.resource.data.size() < 15;
+      allow read, update, delete: if false;
+    }
+
+    match /leads_clinica/{doc} {
+      allow create: if request.resource.data.nome is string
+                    && request.resource.data.nome.size() > 1
+                    && request.resource.data.nome.size() < 200
+                    && request.resource.data.size() < 15;
+      allow read, update, delete: if false;
+    }
+  }
+}
+```
+
+Campos de `leads_clinica`: `nome`, `whatsapp`, `atendimento`, `origem`,
+`criadoEm`, `userAgent`.
