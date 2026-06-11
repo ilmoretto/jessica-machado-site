@@ -1,9 +1,10 @@
 /* ============================================================
-   CAPTURA DE LEADS → Firestore + WhatsApp
-   Atua apenas em formulários com [data-collection] (Neuropsicologia).
-   - Sempre abre o WhatsApp (funciona mesmo sem Firebase configurado).
-   - Se o Firebase estiver configurado, grava o lead no Firestore em
-     paralelo (fire-and-forget, sem travar a abertura do WhatsApp).
+   CAPTURA DE LEADS → Firestore (multi-projeto) + WhatsApp
+   Atua em formulários com [data-collection].
+   - data-fb        → qual projeto Firebase usar (neuro | clinica)
+   - data-collection→ coleção onde grava o lead
+   - Sempre abre o WhatsApp (funciona mesmo sem Firebase).
+   - Grava no Firestore em paralelo, se o projeto estiver configurado.
    ============================================================ */
 (function () {
   "use strict";
@@ -11,16 +12,54 @@
   var forms = document.querySelectorAll(".capture-form[data-collection]");
   if (!forms.length) return;
 
-  var saveLead = null; // definido quando o Firebase carregar
+  var CONFIGS = window.FIREBASE_CONFIGS || {};
+  var fbLib = null;   // promise de [appMod, fsMod]
+  var apps = {};      // nome → promise de { db, fs }
+
+  function loadFirebase() {
+    if (!fbLib) {
+      fbLib = Promise.all([
+        import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"),
+        import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
+      ]);
+    }
+    return fbLib;
+  }
+
+  function getProject(name) {
+    var cfg = CONFIGS[name];
+    if (!cfg || !cfg.apiKey || /COLE_AQUI/i.test(cfg.apiKey)) {
+      return Promise.resolve(null); // projeto não configurado → só WhatsApp
+    }
+    if (apps[name]) return apps[name];
+    apps[name] = loadFirebase().then(function (mods) {
+      var appMod = mods[0], fsMod = mods[1];
+      var app = appMod.initializeApp(cfg, name); // app nomeado (1 por projeto)
+      return { db: fsMod.getFirestore(app), fs: fsMod };
+    }).catch(function (err) {
+      console.warn("[lead] Firebase indisponível (" + name + "):", err);
+      return null;
+    });
+    return apps[name];
+  }
 
   forms.forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       // 1) grava no banco em segundo plano (não bloqueia o WhatsApp)
-      if (saveLead) {
-        try { saveLead(form); } catch (err) { console.warn("[lead] falha ao gravar:", err); }
+      var project = form.dataset.fb;
+      var coll = form.dataset.collection;
+      if (project) {
+        getProject(project).then(function (ctx) {
+          if (!ctx) return;
+          var data = collectData(form);
+          data.origem = coll;
+          data.criadoEm = ctx.fs.serverTimestamp();
+          data.userAgent = navigator.userAgent;
+          return ctx.fs.addDoc(ctx.fs.collection(ctx.db, coll), data);
+        }).catch(function (err) { console.warn("[lead] gravação falhou:", err); });
       }
-      // 2) abre o WhatsApp dentro do gesto do usuário (evita bloqueio de popup)
+      // 2) abre o WhatsApp dentro do gesto do usuário
       openWhatsApp(form);
     });
   });
@@ -48,28 +87,4 @@
     });
     window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
   }
-
-  /* ---- inicializa Firebase só se o config estiver preenchido ---- */
-  var cfg = window.FIREBASE_CONFIG || {};
-  var configured = cfg.apiKey && !/COLE_AQUI/i.test(cfg.apiKey);
-  if (!configured) return; // sem config → segue só com WhatsApp
-
-  Promise.all([
-    import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"),
-    import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
-  ]).then(function (mods) {
-    var appMod = mods[0], fsMod = mods[1];
-    var app = appMod.initializeApp(cfg);
-    var db = fsMod.getFirestore(app);
-    saveLead = function (form) {
-      var data = collectData(form);
-      data.origem = form.dataset.collection;
-      data.criadoEm = fsMod.serverTimestamp();
-      data.userAgent = navigator.userAgent;
-      return fsMod.addDoc(fsMod.collection(db, form.dataset.collection), data)
-        .catch(function (err) { console.warn("[lead] Firestore recusou:", err); });
-    };
-  }).catch(function (err) {
-    console.warn("[lead] Firebase indisponível, capturando só via WhatsApp:", err);
-  });
 })();
