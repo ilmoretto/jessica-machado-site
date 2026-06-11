@@ -49,6 +49,21 @@
     });
   }
 
+  /* --- Portabilidade de domínio: ajusta canonical/OG ao endereço atual,
+         para que trocar de domínio/hospedagem não exija editar cada página. --- */
+  (function () {
+    var clean = location.href.split("#")[0].split("?")[0];
+    var canon = document.querySelector('link[rel="canonical"]');
+    if (canon) canon.setAttribute("href", clean);
+    var ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", clean);
+    var mark = document.querySelector(".brand-mark");
+    var ogImg = document.querySelector('meta[property="og:image"]');
+    if (ogImg && mark && mark.src) {
+      ogImg.setAttribute("content", mark.src.replace("logo-jessica-sm", "logo-jessica"));
+    }
+  })();
+
   /* --- Reveal ao rolar --- */
   const revealEls = document.querySelectorAll(
     ".pillar, .card, .about-text, .about-photo, .split-text, .emergency, .book, .section-head, .hero-text, .hero-art, .lp-hero-text, .capture-card, .area-card, .tl-item, .step, .faq-item"

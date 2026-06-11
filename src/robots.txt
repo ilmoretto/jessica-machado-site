@@ -1,3 +1,4 @@
+# Ao trocar de domínio, atualize a URL do Sitemap abaixo (ver docs/trocar-dominio.md)
 User-agent: *
 Allow: /
 
