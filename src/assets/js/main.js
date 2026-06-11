@@ -122,6 +122,26 @@
     });
   });
 
+  /* --- Aviso de cookies (LGPD) --- */
+  (function () {
+    try { if (localStorage.getItem("cookieConsent") === "ok") return; } catch (e) {}
+    var bar = document.createElement("div");
+    bar.className = "cookie-bar";
+    bar.setAttribute("role", "dialog");
+    bar.setAttribute("aria-label", "Aviso de cookies");
+    bar.innerHTML =
+      '<p>Usamos cookies para entender como você usa o site e melhorar sua ' +
+      'experiência. Ao continuar navegando, você concorda com o uso de cookies de análise.</p>' +
+      '<div class="cookie-actions"><button type="button" class="btn btn-primary" id="cookie-ok">Aceitar</button></div>';
+    document.body.appendChild(bar);
+    document.body.classList.add("cookies-pending");
+    bar.querySelector("#cookie-ok").addEventListener("click", function () {
+      try { localStorage.setItem("cookieConsent", "ok"); } catch (e) {}
+      bar.remove();
+      document.body.classList.remove("cookies-pending");
+    });
+  })();
+
   /* --- Ano atual no rodapé --- */
   const ano = document.getElementById("ano");
   if (ano) ano.textContent = new Date().getFullYear();

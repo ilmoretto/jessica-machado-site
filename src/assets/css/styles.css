@@ -622,3 +622,23 @@ h1, h2, h3 {
 .nav-backdrop.show { opacity: 1; pointer-events: auto; }
 body.menu-open { overflow: hidden; }
 @media (min-width: 901px) { .nav-backdrop { display: none; } }
+
+/* ── Aviso de cookies (LGPD) ── */
+.cookie-bar {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: 16px; z-index: 70;
+  width: min(100% - 1.6rem, 680px);
+  background: var(--branco); border: 1px solid var(--line-2);
+  border-radius: 16px; box-shadow: var(--sh-lg);
+  padding: 1rem 1.2rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.cookie-bar p { flex: 1 1 240px; margin: 0; font-size: .88rem; line-height: 1.5; color: var(--texto-2); }
+.cookie-bar .cookie-actions { display: flex; gap: .5rem; flex: 0 0 auto; }
+.cookie-bar .btn { padding: .6rem 1.4rem; font-size: .9rem; }
+/* sobe o botão do WhatsApp enquanto o aviso está visível (evita sobreposição) */
+body.cookies-pending .wa-float { bottom: 96px; }
+@media (max-width: 560px) {
+  .cookie-bar { flex-direction: column; align-items: stretch; text-align: center; }
+  .cookie-bar .cookie-actions .btn { width: 100%; }
+}
