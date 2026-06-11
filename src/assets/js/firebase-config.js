@@ -27,13 +27,14 @@ window.FIREBASE_CONFIGS = {
     measurementId: "G-NT1BGG5GSH"
   },
 
-  /* Clínica/Psicoterapia — projeto Dashboard Psicoterapia (preencher) */
+  /* Clínica/Psicoterapia — projeto Dashboard Psicoterapia */
   clinica: {
-    apiKey: "COLE_AQUI",
-    authDomain: "COLE_AQUI.firebaseapp.com",
-    projectId: "COLE_AQUI",
-    storageBucket: "COLE_AQUI.firebasestorage.app",
-    messagingSenderId: "COLE_AQUI",
-    appId: "COLE_AQUI"
+    apiKey: "AIzaSyBRafc08UYlyzpfQVmtZ_0ROUxCZeBOq4c",
+    authDomain: "dashboard-psicoterapia.firebaseapp.com",
+    projectId: "dashboard-psicoterapia",
+    storageBucket: "dashboard-psicoterapia.firebasestorage.app",
+    messagingSenderId: "861195329514",
+    appId: "1:861195329514:web:ee7a489ca779b1c6539c93",
+    measurementId: "G-DPBGX2LBGV"
   }
 };
