@@ -69,8 +69,9 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  /* --- Formulário de captura → WhatsApp (sem backend/API) --- */
-  document.querySelectorAll(".capture-form").forEach(function (form) {
+  /* --- Formulário de captura → WhatsApp (forms sem banco; os com
+         [data-collection] são tratados por lead.js: Firestore + WhatsApp) --- */
+  document.querySelectorAll(".capture-form:not([data-collection])").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       const phone = form.dataset.phone || "5569999844141";
