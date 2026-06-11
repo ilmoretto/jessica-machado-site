@@ -1,28 +1,16 @@
 /* ============================================================
    FIREBASE — CONFIG DA JÉSSICA  (parte: NEUROPSICOLOGIA)
    ------------------------------------------------------------
-   👉 ÚNICO ARQUIVO QUE VOCÊ EDITA AMANHÃ.
-
-   Passo a passo completo em: docs/firebase-setup.md
-
-   Resumo:
-   1) Firebase Console → criar projeto → ativar Cloud Firestore.
-   2) Configurações do projeto → "Seus apps" → app Web → copiar o
-      objeto firebaseConfig.
-   3) Cole os valores reais abaixo no lugar de "COLE_AQUI".
-   4) Aplique as regras de segurança (estão no docs/firebase-setup.md).
-
-   Enquanto estiver "COLE_AQUI", o formulário funciona normalmente
-   só pelo WhatsApp (não grava no banco). Nada quebra.
-
-   ⚠️ Estes valores NÃO são segredo — o config web do Firebase é
-   público por natureza (a segurança fica nas Regras do Firestore).
+   Projeto: dashboard-jessica
+   Config web (público por natureza — segurança fica nas Regras
+   do Firestore). Passo a passo em: docs/firebase-setup.md
    ============================================================ */
 window.FIREBASE_CONFIG = {
-  apiKey: "COLE_AQUI",
-  authDomain: "COLE_AQUI.firebaseapp.com",
-  projectId: "COLE_AQUI",
-  storageBucket: "COLE_AQUI.appspot.com",
-  messagingSenderId: "COLE_AQUI",
-  appId: "COLE_AQUI"
+  apiKey: "AIzaSyBWWyuISV_FHb9YvzTq8fSYGylCg5X8rz8",
+  authDomain: "dashboard-jessica.firebaseapp.com",
+  projectId: "dashboard-jessica",
+  storageBucket: "dashboard-jessica.firebasestorage.app",
+  messagingSenderId: "386793328816",
+  appId: "1:386793328816:web:c243407b688e3b4ddb2b75",
+  measurementId: "G-NT1BGG5GSH"
 };
