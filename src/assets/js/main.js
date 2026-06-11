@@ -64,6 +64,27 @@
     }
   })();
 
+  /* --- Rastreio de cliques (Google Analytics): registra qual link/botão
+         foi clicado, com texto, destino e página de origem. --- */
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest("a, button");
+    if (!el || typeof window.gtag !== "function") return;
+    var texto = (el.textContent || el.getAttribute("aria-label") || "")
+      .replace(/\s+/g, " ").trim().slice(0, 100);
+    var url = el.getAttribute("href") || "";
+    var tipo = "link";
+    if (/wa\.me|whatsapp/i.test(url)) tipo = "whatsapp";
+    else if (/mailto:/i.test(url)) tipo = "email";
+    else if (/amazon\./i.test(url)) tipo = "livro_amazon";
+    else if (el.tagName === "BUTTON") tipo = "botao";
+    window.gtag("event", "clique_link", {
+      link_texto: texto,
+      link_url: url,
+      tipo_link: tipo,
+      pagina: location.pathname
+    });
+  }, true);
+
   /* --- Reveal ao rolar --- */
   const revealEls = document.querySelectorAll(
     ".pillar, .card, .about-text, .about-photo, .split-text, .emergency, .book, .section-head, .hero-text, .hero-art, .lp-hero-text, .capture-card, .area-card, .tl-item, .step, .faq-item"
