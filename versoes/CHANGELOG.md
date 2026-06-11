@@ -8,6 +8,10 @@ Para gerar uma versão nova: `python build-zip.py` (na raiz do projeto).
 
 ---
 
+## v2 — 2026-06-11
+- Evento de conversão no envio dos formulários: **Lead** (Meta Pixel) e
+  **gerar_lead** (Google Analytics), com a área (neuropsicologia/clínica).
+
 ## v1 — 2026-06-11
 - Site completo: perfil (index), neuropsicologia, relacionamentos + página 404.
 - Identidade visual da marca (logo Ψ floral, paleta bordô/rosa), fotos reais e livro 3D.
