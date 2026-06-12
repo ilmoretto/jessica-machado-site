@@ -73,3 +73,4 @@ Thumbs.db
 # Pacotes de deploy gerados localmente
 *.zip
 jessica-site/
+jessica-site*/
