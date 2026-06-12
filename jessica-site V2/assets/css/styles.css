@@ -466,10 +466,6 @@ h1, h2, h3 {
   .about-photo { max-width: 340px; margin-inline: auto; }
   .footer-inner { grid-template-columns: 1fr; }
 
-  /* sem backdrop-filter no mobile: ele tornaria o header o bloco de
-     contenção do menu fixo, prendendo o painel à altura do header */
-  .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--creme); }
-
   .nav {
     position: fixed; inset: 0 0 0 auto; width: min(80%, 330px);
     background: var(--branco); flex-direction: column; align-items: flex-start;
