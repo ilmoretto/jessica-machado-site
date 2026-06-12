@@ -133,9 +133,8 @@
     bar.setAttribute("role", "dialog");
     bar.setAttribute("aria-label", "Aviso de cookies");
     bar.innerHTML =
-      '<p>Usamos cookies para entender como você usa o site e melhorar sua ' +
-      'experiência. Ao continuar navegando, você concorda com o uso de cookies de análise.</p>' +
-      '<div class="cookie-actions"><button type="button" class="btn btn-primary" id="cookie-ok">Aceitar</button></div>';
+      '<p>Usamos cookies para melhorar sua experiência. Ao continuar, você concorda.</p>' +
+      '<div class="cookie-actions"><button type="button" class="btn btn-primary" id="cookie-ok">Ok</button></div>';
     document.body.appendChild(bar);
     document.body.classList.add("cookies-pending");
     bar.querySelector("#cookie-ok").addEventListener("click", function () {
