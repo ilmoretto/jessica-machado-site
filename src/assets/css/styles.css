@@ -456,6 +456,8 @@ h1, h2, h3 {
 
 /* ════════════════ RESPONSIVO ════════════════ */
 @media (max-width: 900px) {
+  /* defesa contra scroll horizontal por animação/sombra (sugestão Alê) */
+  html { overflow-x: clip; }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-art { order: -1; margin-bottom: 1rem; }
   .portrait { max-width: 320px; }
