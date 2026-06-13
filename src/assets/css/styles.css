@@ -459,8 +459,8 @@ h1, h2, h3 {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-art { order: -1; margin-bottom: 1rem; }
   .portrait { max-width: 320px; }
-  .float-card--top { left: 0; }
-  .float-card--bottom { right: 0; }
+  /* Cards flutuantes só fazem sentido no desktop (no mobile cobririam o rosto) */
+  .float-card { display: none; }
   .pillar-grid, .cards-3 { grid-template-columns: 1fr; }
   .about-grid, .split { grid-template-columns: 1fr; }
   .about-photo { max-width: 340px; margin-inline: auto; }
