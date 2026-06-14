@@ -1,0 +1,38 @@
+name: Deploy → Hostinger
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - '.github/workflows/deploy-hostinger.yml'
+  workflow_dispatch:  # permite rodar manualmente pelo botão "Run workflow"
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: true
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync src/ to Hostinger via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server:        ${{ secrets.HOSTINGER_FTP_HOST }}
+          username:      ${{ secrets.HOSTINGER_FTP_USER }}
+          password:      ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          server-dir:    ${{ secrets.HOSTINGER_REMOTE_DIR }}   # ex: /public_html/
+          local-dir:     ./src/
+          protocol:      ftps                                   # criptografado
+          dangerous-clean-slate: false                          # não apaga arquivos que você adicionou no servidor
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.claude/**
+            **/node_modules/**
+            **/*.zip
