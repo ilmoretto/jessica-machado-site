@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" />
   </noscript>
   <link rel="stylesheet" href="assets/css/styles.css?v=6" />
-  <link rel="stylesheet" href="assets/css/blog.css?v=1" />
+  <link rel="stylesheet" href="assets/css/blog.css?v=2" />
 </head>
 <body>
 
@@ -68,7 +68,7 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="nav" id="nav-menu">
-        <a href="index.html">Sobre</a>
+        <a href="index.html">Perfil da Jéssica</a>
         <a href="neuropsicologia.html">Neuropsicologia</a>
         <a href="relacionamentos.html">Relacionamentos</a>
         <a href="blog.html">Blog</a>
@@ -96,6 +96,17 @@
         <article class="post-article" id="post-article" style="display:none;"></article>
       </div>
     </section>
+
+    <!-- Posts relacionados (preenchido via JS quando houver) -->
+    <section class="section section-soft" id="post-related" style="display:none;">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow"><svg class="icon"><use href="assets/icons/sprite.svg#i-feather"/></svg> Continue lendo</p>
+          <h2>Outros artigos</h2>
+        </div>
+        <div class="blog-grid" id="post-related-grid"></div>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
@@ -109,7 +120,7 @@
         </div>
       </div>
       <nav class="footer-nav">
-        <a href="index.html">Sobre</a>
+        <a href="index.html">Perfil da Jéssica</a>
         <a href="neuropsicologia.html">Neuropsicologia</a>
         <a href="relacionamentos.html">Relacionamentos</a>
         <a href="blog.html">Blog</a>
@@ -130,9 +141,9 @@
     <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.8c2.16 0 4.19.84 5.72 2.37a8.05 8.05 0 0 1 2.37 5.72c0 4.46-3.63 8.09-8.1 8.09a8.1 8.1 0 0 1-4.12-1.13l-.3-.18-3.06.8.82-2.99-.2-.31a8.03 8.03 0 0 1-1.24-4.28c0-4.46 3.63-8.09 8.1-8.09Zm4.66 11.5c-.06-.1-.23-.16-.5-.3-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.6.13-.18.27-.7.88-.85 1.06-.16.18-.31.2-.58.07-.27-.14-1.14-.42-2.17-1.34-.8-.72-1.34-1.6-1.5-1.87-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.13-.6-1.46-.83-2-.22-.52-.44-.45-.6-.46l-.5-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3 0 1.35.98 2.65 1.12 2.83.14.18 1.93 2.95 4.68 4.13.65.28 1.16.45 1.56.58.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28Z"/></svg>
   </a>
 
-  <!-- DOMPurify para sanitização de HTML -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
-  <script src="assets/js/blog.js?v=1"></script>
+  <!-- DOMPurify (defer p/ não bloquear render) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
+  <script defer src="assets/js/blog.js?v=2"></script>
   <script src="assets/js/main.js?v=7"></script>
 </body>
 </html>
